@@ -129,6 +129,9 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+myvenv/
+
+week8_tutorial/
 
 # Spyder project settings
 .spyderproject
