@@ -96,7 +96,7 @@
 {% endif %}
 ```
 
-ใน condition ของ if เราสามารถใส้ and, or หรือ not ได้ เช่น
+ใน condition ของ if เราสามารถใส่ and, or หรือ not ได้ เช่น
 
 ```html
 {% if athlete_list and coach_list %}
@@ -219,7 +219,7 @@ path("client/<int:id>/", app_views.client, name="app-views-client")
 {{ value|default:"nothing" }}
 ```
 
-ถ้าค่าของ `value` แปลงเป็ย boolean ได้เป็น False จะแสดงค่า "nothing"
+ถ้าค่าของ `value` แปลงเป็น boolean ได้เป็น False จะแสดงค่า "nothing"
 
 - **default_if_none**
 
