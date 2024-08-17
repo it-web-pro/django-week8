@@ -1,5 +1,7 @@
-# WEEK 7 EXCERCISE
+# WEEK 8 EXCERCISE
 ![Execer7-4](./images/ER7.png)
+
+> สามารถใช้ project ของ week 7 ในการทำแบบฝึกหัดครังนี้ได้ครับ
 
 1. สร้าง project ชื่อ `employee_management`
 2. สร้าง database ใหม่ชื่อ `employee_db`
