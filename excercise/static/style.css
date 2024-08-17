@@ -4,6 +4,19 @@
   box-sizing: border-box;
 }
 
+nav {
+  display: flex;
+  justify-content: space-around;
+  background-color: #466bff;
+  color: white;
+  padding: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
 .itemGroup {
   display: flex;
   flex-direction: column;
