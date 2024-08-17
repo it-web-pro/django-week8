@@ -1,7 +1,8 @@
 # WEEK 8 EXCERCISE
 ![Execer7-4](./images/ER7.png)
 
-> สามารถใช้ project ของ week 7 ในการทำแบบฝึกหัดครังนี้ได้ครับ
+## Setup
+> หากมี project ของ week 7 สามารถใช้ในการทำแบบฝึกหัดครังนี้ต่อได้ครับ (ข้ามข้อ 1-7)
 
 1. สร้าง project ชื่อ `employee_management`
 2. สร้าง database ใหม่ชื่อ `employee_db`
@@ -101,7 +102,7 @@
 
 ![layout](images/layout.png)
 
-1.2 ประปรุงไฟล์ html ในโฟลเดอร์ templates โดยให้ extends ไฟล์ `layout.html` และกำหนด code ภายใน block ให้เหมาะสมพร้อมแสดงผลให้ถูกต้อง 
+1.2 ปรับปรุงไฟล์ html ในโฟลเดอร์ templates โดยให้ extends ไฟล์ `layout.html` และกำหนด code ภายใน block ให้เหมาะสมพร้อมแสดงผลให้ถูกต้อง 
 
 1.3 ให้นักนักศึกษาเรียกใช้ static ไฟล์ใน block `script` ให้สามารถใช้งาน function ได้ถูกต้อง
 
