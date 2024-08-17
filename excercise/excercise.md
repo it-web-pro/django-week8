@@ -77,7 +77,6 @@
 8. ให้นักศึกษาลากโฟลเดอร์ `templates` ใน excercise ไปไว้ที่โฟลเดอร์ `employee` ขอโปรเจคนักศึกษา
     ```
     templates/
-        - base_layout.hmtl
         - employee.hmtl
         - nav.html
         - position.html
