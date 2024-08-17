@@ -61,7 +61,7 @@
                         <input type="text" name="emp_id" id="input-add-staff" placeholder="EMPLOYEE ID">
 
                         <!-- function addStaff(projectId, staffId, csrf_token) -->
-                        <button type="submit" onclick="addStaff( {{}} ,{{}} ,'{{ csrf_token }}'}} )">ADD</button>
+                        <button type="submit" onclick="addStaff()">ADD</button>
                     </div>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                     <div class="action">
 
                         <!-- function removeStaff(project_id ,staff_id, '{{ csrf_token }}' )-->
-                        <button type="submit" class="delete" onclick="removeStaff( {{ }}, {{ }} ,{{'{{ csrf_token }}'}} )">Kick this Staff</button>
+                        <button type="submit" class="delete" onclick="removeStaff()">Kick this Staff</button>
                     </div>
                 </div>
 

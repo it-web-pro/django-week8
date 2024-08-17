@@ -274,6 +274,11 @@ class Task(models.Model):
 
 เราสามารถสร้าง customer tag และ filter ได้เอง ละก็มีคนอื่นที่เขาทำ libraries ของ third-party custom tags and filters มาให้ใช้งานด้วยเช่น `humanize`
 
+วิธีติดตั้ง `humanize`:
+
+1. pip install humanize
+2. เพิ่ม 'django.contrib.humanize' ใน INSTALLED_APPS ในไฟล์ settings
+
 เช่น
 
 ```html

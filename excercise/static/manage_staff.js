@@ -1,7 +1,4 @@
-function addStaff(pro_Id, staff_id, csrf_token){
-    const emp = document.getElementById('input-add-staff');
-    const data = {emp_id: emp.value};
-
+function addStaff(pro_id, staff_id, csrf_token){
     // กำหนด path ให้ถูกต้อง
     fetch(``, {
         method: 'PUT',
@@ -18,8 +15,7 @@ function addStaff(pro_Id, staff_id, csrf_token){
 }
 
 
-async function removeStaff(pro_Id, emp_Id, csrf_token){
-
+async function removeStaff(pro_id, emp_id, csrf_token){
     // กำหนด path ให้ถูกต้อง
     fetch(``, {
         method: 'DELETE',
