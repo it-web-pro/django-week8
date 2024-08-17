@@ -97,7 +97,7 @@
 ## 1. Tamplate
 > นักศึกษาสามารถปรับปรุง view ของแบบฝึกหัด week7 มาใช้ร่วมกับแบบฝึกหัดครั้งนี้ได้
 
-1.1 สร้างไฟล์ `layout.html` ในโฟลเดอร์ `templates` และกำหนด block ดังนี้ `title`, `nav`, `head`, `content`, `script` พร้อมเรียกใช้ `style.css` ในโฟลเดอร์ `static` 
+1.1 สร้างไฟล์ `layout.html` ในโฟลเดอร์ `templates` และกำหนด block ดังนี้ `title`, `nav`, `head`, `content`, `script` พร้อมเรียกใช้ `style.css` ในโฟลเดอร์ `static` โดยจะมีโครงสร้าง Layout ตามรูป
 
 ![layout](images/layout.png)
 
