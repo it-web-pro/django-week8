@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project</title>
+</head>
+
+<body>
+
+    <main>
+        <div class="head">
+            <h1>Project</h1>
+        </div>
+
+        <div class="itemGroup">
+            
+            <div class="item">
+                <!-- โปรเจค id และ ชื่อ -->
+                <div>{{}}</div>
+
+                <!-- วันเริ่ม และ วันกำหนดส่งโปรเจค -->
+                <div>{{}} - {{}}</div>
+
+                <div class="action">
+                    <!-- กำหนด path ให้ถูกต้อง -->
+                    <a href="/" class="edit btn">แก้ไข</a>
+                    
+                    <!-- ถ้า code มันแจ้งเตือนอะไรก็ปล่อยไปนะครับไม่มีผลอะไร  -->
+                    <!-- deleteProject(projectId ,csrf_token) -->
+                    <button type="submit" onclick="deleteProject({{ }}, '{{csrf_token}}')" class="delete">Delete</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
