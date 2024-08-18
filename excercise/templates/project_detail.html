@@ -23,22 +23,18 @@
                 <!-- รายละเอียกของโปรเจค -->
                 <textarea placeholder="description" rows="4"> {{}} </textarea>
 
-                <!-- 
-                    start_date และ due_date ต้องจัดให้อยู่ในรูปแบบ %Y-%m-%d โดยใช้ strftime ใน view ก่อนนำมาใช้
-                    แนะนำให้ส่งแยก key
-                -->
                 <label for="">Start Date</label>
                 <input 
                     type="date" placeholder="start-date"
                     style="width: 150px;" 
-                    value="{{ start_date }}" 
+                    value="{{  }}" 
                 >
                 <label for="">Due Date</label>
                 <input 
                     type="date" 
                     placeholder="due-date" 
                     style="width: 150px;" 
-                    value="{{ due_date }}"
+                    value="{{  }}"
                 >
 
                 <label for="">Project Manager</label>
