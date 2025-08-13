@@ -2,7 +2,7 @@
 
 ## Built-in tag reference
 
-[Ref](https://docs.djangoproject.com/en/5.1/ref/templates/builtins/#built-in-tag-reference)
+[Ref](https://docs.djangoproject.com/en/5.2/ref/templates/builtins/#built-in-tag-reference)
 
 - **autoescape** สำหรับเอาไว้ เปิด - ปิด auto escape
 
@@ -183,7 +183,7 @@ path("client/<int:id>/", app_views.client, name="app-views-client")
 
 ## Built-in filter reference
 
-[Ref](https://docs.djangoproject.com/en/5.1/ref/templates/builtins/#built-in-filter-reference)
+[Ref](https://docs.djangoproject.com/en/5.2/ref/templates/builtins/#built-in-filter-reference)
 
 - **add**
 

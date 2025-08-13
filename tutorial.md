@@ -64,7 +64,7 @@ class IndexView(View):
 </html>
 ```
 
-โดยเพิ่มให้แสดงคำถาม `question_text` ไม่เกิน 40 ตัวอักษร [truncatechars](https://docs.djangoproject.com/en/5.0/ref/templates/builtins/#truncatechars) และ แสดง pub_date "Fri 31, Jan 24" [date](https://docs.djangoproject.com/en/5.0/ref/templates/builtins/#date)
+โดยเพิ่มให้แสดงคำถาม `question_text` ไม่เกิน 40 ตัวอักษร [truncatechars](https://docs.djangoproject.com/en/5.2/ref/templates/builtins/#truncatechars) และ แสดง pub_date "Fri 31, Jan 24" [date](https://docs.djangoproject.com/en/5.2/ref/templates/builtins/#date)
 
 ```html
 ...
@@ -195,10 +195,13 @@ class IndexView(View):
 </html>
 ```
 
-จะเห็นได้ว่ามีการใช้งาน template tag `csrf_token` และ `url`
+จะเห็นได้ว่ามีการใช้งาน template tag `csrf_token` ในฟอร์ม ซึ่งเป็นกลไลของ Django ในการป้องกันปัญหา CSRF หรือ Cross-Site Request Forgery
 
-#### What is CSRF Token in Django?
+CSRF เป็นช่องโหว่ที่ Attakcer ส่ง HTML หรือ JavaScript ให้ Web browser ของเหยื่อส่ง HTTP request เพื่อไปกระทำการบางอย่างที่เป็นอันตรายต่อผู้ใช้งาน หลักการของ CSRF เป็นตัวอย่างดังรูป
 
-[Source](https://www.geeksforgeeks.org/csrf-token-in-django/)
+![csrf](image.png)
 
-> Django provides a feature to prevent such types of malicious attacks. When a user is authenticated and surfing on the website, Django generates a unique CSRF token for each session. This token is included in forms or requests sent by the user and is checked by the server to verify that the request is coming from the authenticated user and not from a malicious source.
+1. Attacker เตรียม request หรือ ปลอมแปลง web application นั้นๆ
+2. Attacker ส่ง html / javascript ให้ web browser หลังจากนั้น user Login เข้า web browser นั้น ด้วย Account ของ User เอง
+3. เมื่อ login เสร็จ และ Attacker จะได้ค่า session มาเก็บใน cookie บน web browser แล้ว user เข้าเว็บไซต์ของ Attacker โดยไม่ได้ตั้งใจ จากนั้น Website ของ Attacker บังคับให้ Browser ของ user ส่ง HTTP request ไปที่ web browser มันจะส่งค่า session ที่อยู่ใน Cookie ไปด้วย
+4. เมื่อ Server ได้รับ HTTP request จากข้อ 3 แล้ว check ค่า session ที่อยู่ใน cookie ถ้า Attacker ทำสำเร็จ ค่า session ถูกต้อง Attacker สามารถนำไปใช้งานต่อได้ จึงอนุญาตให้ process HTTP request นั้นต่อ

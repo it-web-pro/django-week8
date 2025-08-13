@@ -39,7 +39,7 @@ Filters ใช้ในการ modify ค่าของตัวแปร เ
 
 นอกจากนั้น filter บางตัวก็มีการรับ argument เช่น {{ bio|truncatewords:30 }}
 
-[built-in filter reference](https://docs.djangoproject.com/en/5.1/ref/templates/builtins/#ref-templates-builtins-filters)
+[built-in filter reference](https://docs.djangoproject.com/en/5.2/ref/templates/builtins/#ref-templates-builtins-filters)
 
 Filter ที่ใช้บ่อยๆ:
 
@@ -58,7 +58,7 @@ Syntax ของ tag จะเป็น {% %} โดย tag จะเกี่�
 
 และบาง tag จะต้องมีการเปิด และ ปิด tag
 
-[built-in tag reference](https://docs.djangoproject.com/en/5.1/ref/templates/builtins/#ref-templates-builtins-tags)
+[built-in tag reference](https://docs.djangoproject.com/en/5.2/ref/templates/builtins/#ref-templates-builtins-tags)
 
 เช่น
 
