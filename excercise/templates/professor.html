@@ -1,0 +1,114 @@
+{% load custom_filter %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Professor Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-white text-gray-800">
+    {% include 'nav.html' %}
+
+    <main class="p-6 max-w-8xl mx-auto">
+      <section class="mb-6 flex sm:flex-row flex-col gap-4 justify-between">
+        <div class="flex items-center justify-between">
+          <div>
+            <h1 class="text-3xl font-bold text-orange-500">Professor Dashboard</h1>
+            <p class="text-gray-500">
+              Total <span class="font-medium text-blue-500">{{total}}</span> Professors
+            </p>
+          </div>
+        </div>
+        <section aria-label="Filter content" class="sm:self-end sm:place-items-end flex flex-col gap-y-2">
+          <label class="text-2xl font-medium" for="search">Quick Search</label>
+          <div class="flex flex-row gap-x-4 flex-wrap sm:justify-end" aria-label="Advanced Filters">
+            <div aria-label="Full name">
+              {% if filter == '' or filter == None %}
+                <input class="cursor-pointer" type="radio" id="fullname" name="a_filter" value="" checked />
+              {% else %}
+                <input class="cursor-pointer" type="radio" id="fullname" name="a_filter" value="" />
+              {% endif %}
+              <label class="cursor-pointer" for="fullname">Full Name</label>
+            </div>
+            <div aria-label="Faculty">
+              {% if filter == 'faculty' %}
+                <input class="cursor-pointer" type="radio" id="faculty" name="a_filter" value="faculty" checked />
+              {% else %}
+                <input class="cursor-pointer" type="radio" id="faculty" name="a_filter" value="faculty" />
+              {% endif %}
+              <label class="cursor-pointer" for="faculty">Faculty</label>
+            </div>
+          </div>
+          <input 
+          class="block w-[300px] rounded-md field-sizing-content border-[1px] px-4 py-2" 
+          id="search" 
+          type="text" 
+          placeholder="Search professors..." 
+          autocomplete="search" value="{{search}}" 
+          title="Filter data" />
+        </section>
+      </section>
+
+      <div class="overflow-x-auto bg-white rounded-lg shadow border border-orange-100">
+        <table class="min-w-full divide-y divide-orange-100">
+          <thead class="bg-orange-100 text-left text-sm font-semibold text-gray-700">
+            <tr>
+              <th class="px-4 py-3">ID</th>
+              <th class="px-4 py-3">Full Name</th>
+              <th class="px-4 py-3">Faculty</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100 text-sm">
+            {% for professor in professor_list %}
+              <tr class="hover:bg-orange-50 transition">
+                <td class="px-4 py-3">{{ }}</td>
+                <td class="px-4 py-3 font-medium">{{ }}</td>
+                <td class="px-4 py-3">{{ }}</td>
+              </tr>
+            {% empty %}
+              <tr>
+                <td colspan="4" class="text-center text-gray-400 px-4 py-6">No professor found.</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <script>
+      let typingTimer
+      const doneTypingInterval = 500
+      
+      const searchInput = document.getElementById('search')
+      const filterField = document.getElementsByName('a_filter')
+      
+      if (searchInput.value !== '') {
+        const endPosition = searchInput.value.length
+        searchInput.setSelectionRange(endPosition, endPosition)
+      }
+      
+      searchInput.addEventListener('keyup', () => {
+        clearTimeout(typingTimer)
+        typingTimer = setTimeout(doneTyping, doneTypingInterval)
+      })
+      
+      filterField.forEach((value, index) => {
+        value.addEventListener('click', () => {
+          doneTyping()
+        })
+      })
+      
+      function doneTyping() {
+        let filterValue = ''
+        filterField.forEach((value, index) => {
+          filterValue = value.checked ? value.value : filterValue
+        })
+        // Hint: ใช้ template tag 'url' แทน '/'
+        window.location.href = `/?search=${searchInput.value}&filter=${filterValue}`
+      }
+      if (searchInput.value) searchInput.focus()
+    </script>
+  </body>
+</html>
