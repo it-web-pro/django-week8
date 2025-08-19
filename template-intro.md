@@ -286,3 +286,139 @@ class Task(models.Model):
 
 {{ 45000|intcomma }}
 ```
+
+## How to create custom template tags and filters
+
+การสร้าง custom template tags และ filters เริ่มด้วยการสร้าง folder `templatetags` ใน app ที่เกี่ยวข้อง (สร้างไว้ระดับเดียวกับ views.py/models.py) 
+
+สมมติเราจะสร้าง template tag ชื่อ poll_extras
+
+```
+polls/
+    __init__.py
+    models.py
+    templatetags/
+        __init__.py
+        poll_extras.py
+    views.py
+```
+
+การนำไปใช้งานใน template
+
+```
+{% load poll_extras %}
+```
+
+### Writing custom template filters
+
+Custom filters ก็คือ Python function ที่รับ 1 หรือ 2 arguments
+- ค่าตัวแปร input
+- ค่าตัวแปร argument ซึ่งอาจจะเป็นค่า default หรือไม่มีเลยก็ได้
+
+เช่น
+
+```python
+def cut(value, arg):
+    """Removes all values of arg from the given string"""
+    return value.replace(arg, "")
+```
+
+การเรียกใช้ใน template
+
+```
+{% load custom_filters %}
+
+{{ somevariable|cut:"0" }}
+```
+
+โดยถ้าจะไม่รับ argument ก็ได้ ตอนประกาศ function ก็ไม่ต้องใส่
+
+```python
+def lower(value):  # Only one argument.
+    """Converts a string into all lowercase"""
+    return value.lower()
+```
+
+#### Registering custom filters
+
+สำหรับการ register ให้ Django รู้จัก custom filter ที่เราสร้างขึ้นมาสามารถทำได้โดยใช้ `register.filter()`
+
+`register.filter()` รับ argument 2 ตัวได้แก่
+- ชื่อของ filter สำหรับใช้เรียกใน template - string
+- ตัว Python function ที่เราสร้างขึ้นมา
+
+```python
+from django import template
+
+register = template.Library()
+
+def cut(value, arg):
+    """Removes all values of arg from the given string"""
+    return value.replace(arg, "")
+
+def lower(value):  # Only one argument.
+    """Converts a string into all lowercase"""
+    return value.lower()
+
+register.filter("cut", cut)
+register.filter("lower", lower)
+```
+
+หรือ register โดยใช้ decorator
+
+```python
+@register.filter(name="cut")
+def cut(value, arg):
+    return value.replace(arg, "")
+
+
+@register.filter
+def lower(value):
+    return value.lower()
+```
+
+### Writing custom template tags
+
+Tag จะมีความซับซ้อนมากกว่า filter เพราะเราจะทำอะไรก็ได้ โดยเราจะใช้ `library.simple_tag()` ในการ register ตัว function
+
+ยกตัวอย่างเช่นถ้าเราอยากจะเขียน template tag ที่แสดง วันที่-เวลา ปัจจุบัน
+
+```python
+import datetime
+from django import template
+
+register = template.Library()
+
+@register.simple_tag
+def current_time(format_string):
+    return datetime.datetime.now().strftime(format_string)
+
+# กำหนดชื่อ template tag
+@register.simple_tag(name="minustwo")
+def some_function(value):
+    return value - 2
+
+# สามารถรับ arguments กี่ตัวก็ได้
+@register.simple_tag
+def my_tag(a, b, *args, **kwargs):
+    warning = kwargs["warning"]
+    profile = kwargs["profile"]
+    ...
+    return ...
+```
+
+การเรียกใช้ใน template
+
+```
+{% load custom_tags %}
+
+{% my_tag 123 "abcd" book.title warning=message|lower profile=user.profile %}
+```
+
+สามารถเก็บค่าที่ได้รับจาก template tag ในตัวแปรได้
+
+```
+{% current_time "%Y-%m-%d %I:%M %p" as the_time %}
+<p>The time is {{ the_time }}.</p>
+```
+
